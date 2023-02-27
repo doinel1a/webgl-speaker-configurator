@@ -1,0 +1,44 @@
+---
+name: Build and Deploy to CloudFront
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    env:
+      BUCKET: webgl-speaker-configurator.d1a.app
+      DIST: dist
+      REGION: eu-central-1
+      DIST_ID: E2RBEFRMK7BND2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: ${{env.REGION}}
+
+      - name: Install Yarn
+        run: npm install --global yarn
+
+      - name: Install Deps
+        run: yarn install
+
+      - name: Build static files
+        run: yarn build
+
+      - name: Clear old files
+        run: |
+          aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
+
+      - name: Copy files to production
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{env.DIST_ID}} \
+            --paths "/*"
