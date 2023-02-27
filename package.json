@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "author": {
+    "name": "Doinel Atanasiu",
+    "email": "doinel1atanasiu@gmail.com",
+    "url": "https://business-link.d1a.app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doinel1a/vite-react-js-starter"
+  },
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "clean:dist": "npx rimraf dist",
+    "clean:report": "npx rimraf playwright-report",
+    "clean:deps": "npx rimraf high-level-dependencies.html",
+    "deps": "depcruise --version && depcruise --config .dependency-cruiser.cjs --output-type archi src | dot -T svg | depcruise-wrap-stream-in-html > high-level-dependencies.html",
+    "test:chrome": "npx playwright test --headed --project=chromium",
+    "test:firefox": "npx playwright test --headed --project=firefox",
+    "test:safari": "npx playwright test --headed --project=webkit",
+    "lint": "npx eslint --ext js --ext jsx ./src",
+    "lint:fix": "npx eslint --ext js --ext jsx ./src --fix",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "devDependencies": {
+    "@builder.io/partytown": "^0.7.5",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@playwright/test": "^1.30.0",
+    "@types/node": "^18.14.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.15",
+    "dependency-cruiser": "^12.10.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sonarjs": "^0.18.0",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "husky": "^8.0.3",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "sass": "^1.53.3",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.3"
+  }
+}
