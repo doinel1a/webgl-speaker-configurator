@@ -57,7 +57,7 @@ export default function ButtonColor({ colorName, r, g, b, isActive, onClick }) {
     <button
       type='button'
       title={`Apply ${colorName} color`}
-      className='hide aspect-square h-full rounded-xl transition-all'
+      className='hide aspect-square h-full rounded-xl shadow-lg transition-all hover:shadow-xl'
       style={{
         border: `2px solid ${isActive ? '#000' : '#fff'}`,
         backgroundColor: isHovered
