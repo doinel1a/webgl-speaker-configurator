@@ -62,6 +62,8 @@ export default function Viewer() {
 
   return (
     <div className='relative h-full w-full'>
+      <div className='absolute -top-2 z-[3] h-14 w-full rounded-2xl border-b-2 border-neutral-50 bg-secondary'></div>
+      <div className='absolute -bottom-2 z-[3] h-14 w-full rounded-2xl border-t-2 border-neutral-50 bg-secondary'></div>
       {isModelLoaded ? (
         <></>
       ) : (
@@ -69,8 +71,6 @@ export default function Viewer() {
           <span className='loader'></span>
         </div>
       )}
-      <div className='absolute -top-2 h-14 w-full rounded-2xl border-b-2 border-neutral-50 bg-secondary'></div>
-      <div className='absolute -bottom-2 z-[1] h-14 w-full rounded-2xl border-t-2 border-neutral-50 bg-secondary'></div>
       <iframe
         title='3D viewer'
         id='api-frame'
