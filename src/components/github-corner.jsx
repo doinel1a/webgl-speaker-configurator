@@ -8,7 +8,12 @@ GithubCorner.propTypes = {
 
 export default function GithubCorner({ title, url }) {
   return (
-    <a title={title} aria-label={title} href={url} className='github-corner'>
+    <a
+      title={title}
+      aria-label={title}
+      href={url}
+      className='github-corner hidden lg:block'
+    >
       <svg
         width='80'
         height='80'
