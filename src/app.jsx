@@ -7,8 +7,38 @@ const UID = 'ce4b8a9728064410aef495199bf9f42e';
 
 const rootStyle = document.querySelector(':root');
 
+let updateMaterial = () => {};
+
+const colors = [
+  {
+    name: 'sky',
+    r: 0,
+    g: 0.265_222_255_437_353_7,
+    b: 0.667_162_779_707_386
+  },
+  {
+    name: 'indigo',
+    r: 0.124_771_817_560_950_45,
+    g: 0.132_868_321_553_817_92,
+    b: 0.879_622_396_887_831_5
+  },
+  {
+    name: 'red',
+    r: 0.904_661_174_391_149_2,
+    g: 0.049_706_565_984_127_23,
+    b: 0.111_932_427_836_905_67
+  },
+  {
+    name: 'emerald',
+    r: 0.001_517_634_917_744_192_4,
+    g: 0.304_987_314_069_886_16,
+    b: 0.141_263_291_140_271_7
+  }
+];
+
 function App() {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
+  const [plasticLargePartsMaterial, setPlasticLargePartsMaterial] = useState();
 
   useEffect(() => {
     const frame = document.querySelector('#api-frame');
@@ -84,10 +114,29 @@ function App() {
           `${Math.round(factor.progress * 100)}%`
         );
       }),
+
       api.addEventListener('viewerready', function () {
         setTimeout(() => setIsModelLoaded(true), 700);
+
+        api.getMaterialList(function (error, materials) {
+          if (!error) {
+            for (const material of materials) {
+              if (material.name === 'plastic_large_parts') {
+                console.log('BEFORE', material);
+
+                setPlasticLargePartsMaterial(material);
+              }
+            }
+          }
+        });
       })
     );
+
+    updateMaterial = (material, r, g, b) => {
+      material.channels.AlbedoPBR.color = [r, g, b];
+
+      api.setMaterial(material);
+    };
   }
 
   return (
@@ -115,18 +164,54 @@ function App() {
             <button
               type='button'
               className='hide aspect-square h-full rounded-xl bg-blue-500 transition-all hover:bg-blue-700'
+              onClick={() => {
+                const color = colors[0];
+                updateMaterial(
+                  plasticLargePartsMaterial,
+                  color.r,
+                  color.g,
+                  color.b
+                );
+              }}
             />
             <button
               type='button'
               className='hide aspect-square h-full rounded-xl bg-violet-500 transition-all hover:bg-violet-700'
+              onClick={() => {
+                const color = colors[1];
+                updateMaterial(
+                  plasticLargePartsMaterial,
+                  color.r,
+                  color.g,
+                  color.b
+                );
+              }}
             />
             <button
               type='button'
               className='hide aspect-square h-full rounded-xl bg-red-500 transition-all hover:bg-red-700'
+              onClick={() => {
+                const color = colors[2];
+                updateMaterial(
+                  plasticLargePartsMaterial,
+                  color.r,
+                  color.g,
+                  color.b
+                );
+              }}
             />
             <button
               type='button'
               className='hide aspect-square h-full rounded-xl bg-green-500 transition-all hover:bg-green-700'
+              onClick={() => {
+                const color = colors[3];
+                updateMaterial(
+                  plasticLargePartsMaterial,
+                  color.r,
+                  color.g,
+                  color.b
+                );
+              }}
             />
           </div>
         </div>
