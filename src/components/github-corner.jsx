@@ -15,7 +15,7 @@ export default function GithubCorner({ title, url }) {
         viewBox='0 0 250 250'
         style={{
           fill: 'var(--color)',
-          color: 'var(--primary)',
+          color: 'var(--secondary)',
           position: 'absolute',
           top: 0,
           border: 0,
