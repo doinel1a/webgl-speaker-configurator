@@ -62,6 +62,8 @@ export default function Viewer() {
 
   return (
     <div className='relative h-full w-full'>
+      <div className='absolute -top-2 z-[3] h-14 w-full rounded-2xl border-b-2 border-neutral-50 bg-secondary'></div>
+      <div className='absolute -bottom-2 z-[3] h-14 w-full rounded-2xl border-t-2 border-neutral-50 bg-secondary'></div>
       {isModelLoaded ? (
         <></>
       ) : (
@@ -69,8 +71,6 @@ export default function Viewer() {
           <span className='loader'></span>
         </div>
       )}
-      <div className='absolute -top-2 h-14 w-full rounded-2xl border-b-2 border-neutral-50 bg-secondary'></div>
-      <div className='absolute -bottom-2 z-[1] h-14 w-full rounded-2xl border-t-2 border-neutral-50 bg-secondary'></div>
       <iframe
         title='3D viewer'
         id='api-frame'
@@ -79,7 +79,7 @@ export default function Viewer() {
       {isModelLoaded ? (
         <div
           id='config-container'
-          className='absolute bottom-16 z-0 flex h-24 w-full justify-center gap-x-8 bg-blue-500 bg-opacity-0 p-2'
+          className='absolute bottom-12 z-0 flex h-[4.5rem] w-full justify-center gap-x-4 bg-blue-500 bg-opacity-0 p-2 sm:bottom-14 sm:h-[5.5rem] sm:gap-x-6 md:bottom-16 md:h-[6.5rem] md:gap-x-8 lg:h-[7rem]'
         >
           {colors.map((color, index) => (
             <ButtonColor

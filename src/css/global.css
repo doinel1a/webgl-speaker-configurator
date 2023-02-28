@@ -10,31 +10,27 @@
   --secondary: #171717; /* neutral-900 */
   --tertiary: #404040; /* neutral-700 */
   --color: #f3f3f3;
-  --accent-primary: #2563eb; /* blue-600 */
-  --accent-primary-state: #1e40af; /* blue-800 */
+  --accent-primary: #22d3ee; /* cyan-400 */
+  --accent-primary-state: #06b6d4; /* cyan-500 */
 
   --bg-size: 0%;
 }
 
 .loader {
-  @apply relative inline-block text-4xl text-color;
+  @apply relative inline-block text-3xl text-color md:text-4xl lg:text-5xl;
 }
-.loader:after {
-  content: 'Loading';
-  position: relative;
-  z-index: 5;
-}
+
 .loader:before {
+  @apply absolute -bottom-1 h-2 w-full rounded-xl border border-color md:-bottom-2 md:h-3 lg:-bottom-[0.85rem] lg:h-4;
   content: '';
-  height: 8px;
-  border: 1px solid;
-  border-radius: 10px;
-  width: 100%;
-  position: absolute;
-  bottom: -4px;
   background: linear-gradient(var(--accent-primary) 100%, transparent 0)
     no-repeat;
   background-size: var(--bg-size) auto;
+}
+
+.loader:after {
+  @apply relative;
+  content: 'Loading';
 }
 
 .hide {
@@ -46,6 +42,22 @@
 
 .show {
   animation: show 500ms linear forwards;
+}
+
+.show:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.show:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.show:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.show:nth-child(5) {
+  animation-delay: 400ms;
 }
 
 @keyframes show {
