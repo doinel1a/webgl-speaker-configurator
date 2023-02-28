@@ -19,11 +19,13 @@
 .loader {
   @apply relative inline-block text-4xl text-color;
 }
+
 .loader:after {
   content: 'Loading';
   position: relative;
   z-index: 5;
 }
+
 .loader:before {
   content: '';
   height: 8px;
@@ -46,6 +48,22 @@
 
 .show {
   animation: show 500ms linear forwards;
+}
+
+.show:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.show:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.show:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.show:nth-child(5) {
+  animation-delay: 400ms;
 }
 
 @keyframes show {

@@ -27,7 +27,7 @@ export default function ButtonColor({ colorName, r, g, b, isActive, onClick }) {
         timeoutsId.push(
           setTimeout(() => {
             button.classList.add('show');
-          }, 700)
+          }, 400)
         );
 
         eventListeners.push(
