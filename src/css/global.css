@@ -14,6 +14,31 @@
   --accent-primary-state: #1e40af; /* blue-800 */
 }
 
+.hide {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(100%);
+  transition: all 500ms;
+}
+
+.show {
+  animation: show 500ms linear forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
 }

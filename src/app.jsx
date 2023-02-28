@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import GithubCorner from './components/github-corner';
@@ -6,16 +6,18 @@ import GithubCorner from './components/github-corner';
 const UID = 'ce4b8a9728064410aef495199bf9f42e';
 
 function App() {
+  const [isModelLoaded, setIsModelLoaded] = useState(false);
+
   useEffect(() => {
     const frame = document.querySelector('#api-frame');
+
     if (frame) {
       // eslint-disable-next-line no-undef
       const client = new Sketchfab(frame);
+
       client.init(UID, {
         success: onSuccess,
-        error: function onError() {
-          console.log('DEBUG: VIEWER ERROR');
-        },
+        error: () => console.log('DEBUG: VIEWER ERROR'),
         autostart: 1,
         preload: 1,
         camera: 1,
@@ -33,16 +35,51 @@ function App() {
     }
   }, []);
 
-  function onSuccess(api) {
-    api.start();
+  useEffect(() => {
+    const configContainer = document.querySelector('#config-container');
 
-    api.addEventListener('viewerready', function () {
-      api.getNodeMap(function (error, nodes) {
-        if (!error) {
-          window.console.log(nodes); // [ ... ]
-        }
-      });
-    });
+    const timeoutsId = [];
+    const eventListeners = [];
+
+    if (isModelLoaded && configContainer) {
+      const buttons = configContainer.querySelectorAll('button');
+
+      for (const button of buttons) {
+        timeoutsId.push(
+          setTimeout(() => {
+            button.classList.add('show');
+          }, 700)
+        );
+
+        eventListeners.push(
+          button.addEventListener(
+            'animationend',
+            () => {
+              button.classList.add('!duration-150');
+            },
+            false
+          )
+        );
+      }
+    }
+
+    return () => {
+      for (const timeout of timeoutsId) {
+        clearTimeout(timeout);
+      }
+
+      for (const event of eventListeners) {
+        removeEventListener('animationend', event, false);
+      }
+    };
+  }, [isModelLoaded]);
+
+  function onSuccess(api) {
+    api.start(
+      api.addEventListener('viewerready', function () {
+        setTimeout(() => setIsModelLoaded(true), 700);
+      })
+    );
   }
 
   return (
@@ -56,7 +93,29 @@ function App() {
             id='api-frame'
             className='h-full w-full rounded-xl outline-none'
           ></iframe>
+          <div
+            id='config-container'
+            className='absolute bottom-16 z-0 flex h-24 w-full justify-center gap-x-8 bg-blue-500 bg-opacity-0 p-2'
+          >
+            <button
+              type='button'
+              className='hide aspect-square h-full rounded-xl bg-blue-500 transition-all hover:bg-blue-700'
+            />
+            <button
+              type='button'
+              className='hide aspect-square h-full rounded-xl bg-violet-500 transition-all hover:bg-violet-700'
+            />
+            <button
+              type='button'
+              className='hide aspect-square h-full rounded-xl bg-red-500 transition-all hover:bg-red-700'
+            />
+            <button
+              type='button'
+              className='hide aspect-square h-full rounded-xl bg-green-500 transition-all hover:bg-green-700'
+            />
+          </div>
         </div>
+
         <GithubCorner
           title='Get started on GitHub'
           url='https://github.com/doinel1a/vite-react-js-starter'
