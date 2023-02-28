@@ -12,6 +12,29 @@
   --color: #f3f3f3;
   --accent-primary: #2563eb; /* blue-600 */
   --accent-primary-state: #1e40af; /* blue-800 */
+
+  --bg-size: 0%;
+}
+
+.loader {
+  @apply relative inline-block text-4xl text-color;
+}
+.loader:after {
+  content: 'Loading';
+  position: relative;
+  z-index: 5;
+}
+.loader:before {
+  content: '';
+  height: 8px;
+  border: 1px solid;
+  border-radius: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: -4px;
+  background: linear-gradient(var(--accent-primary) 100%, transparent 0)
+    no-repeat;
+  background-size: var(--bg-size) auto;
 }
 
 .hide {

@@ -5,6 +5,8 @@ import GithubCorner from './components/github-corner';
 
 const UID = 'ce4b8a9728064410aef495199bf9f42e';
 
+const rootStyle = document.querySelector(':root');
+
 function App() {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
 
@@ -76,6 +78,12 @@ function App() {
 
   function onSuccess(api) {
     api.start(
+      api.addEventListener('modelLoadProgress', (factor) => {
+        rootStyle.style.setProperty(
+          '--bg-size',
+          `${Math.round(factor.progress * 100)}%`
+        );
+      }),
       api.addEventListener('viewerready', function () {
         setTimeout(() => setIsModelLoaded(true), 700);
       })
@@ -86,6 +94,13 @@ function App() {
     <BrowserRouter>
       <main className='flex h-screen flex-col items-center justify-center bg-secondary p-14 text-color'>
         <div className='relative h-full w-full'>
+          {isModelLoaded ? (
+            <></>
+          ) : (
+            <div className='absolute z-[2] flex h-full w-full flex-col items-center justify-center rounded-xl bg-primary'>
+              <span className='loader'></span>
+            </div>
+          )}
           <div className='absolute -top-2 h-14 w-full rounded-2xl border-b-2 border-neutral-50 bg-secondary'></div>
           <div className='absolute -bottom-2 z-[1] h-14 w-full rounded-2xl border-t-2 border-neutral-50 bg-secondary'></div>
           <iframe
