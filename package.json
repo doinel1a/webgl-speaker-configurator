@@ -12,6 +12,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "postinstall": "npx husky install && npx playwright install",
     "clean:dist": "npx rimraf dist",
     "clean:report": "npx rimraf playwright-report",
     "clean:deps": "npx rimraf high-level-dependencies.html",
