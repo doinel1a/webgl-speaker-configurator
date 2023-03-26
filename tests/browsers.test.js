@@ -1,6 +1,11 @@
 import { test } from '@playwright/test';
 
+import _config from '../_config';
+
+const HOST = _config.server.host;
+const PORT = _config.server.port;
+
 test('Test browsers', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5173/');
+  await page.goto(`${HOST}:${PORT}`);
   await page.pause();
 });
