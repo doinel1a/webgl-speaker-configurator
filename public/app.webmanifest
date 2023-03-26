@@ -1,8 +1,8 @@
 {
   "lang": "en-EN",
-  "name": "Vite ReactJS — Starter",
-  "short_name": "ReactJS — Starter",
-  "description": "Start a React JavaScript App, SPA, landing page or website using Vite, Babel, Core-JS, SASS / SCSS, Tailwind CSS and much more, in just 30 seconds.",
+  "name": "WEBGL Speaker configurator",
+  "short_name": "WEBGL Speaker configurator",
+  "description": "3D Web - ReactJS speaker configurator made with Sketchfab viewer API.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
