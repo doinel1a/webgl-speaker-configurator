@@ -11,7 +11,7 @@ function App() {
         <Viewer />
         <GithubCorner
           title='Get started on GitHub'
-          url='https://github.com/doinel1a/vite-react-js-starter'
+          url='https://github.com/doinel1a/webgl-speaker-configurator'
         />
       </main>
     </BrowserRouter>
