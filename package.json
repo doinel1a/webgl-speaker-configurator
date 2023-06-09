@@ -35,22 +35,22 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2"
+    "react-router-dom": "^6.12.1"
   },
   "devDependencies": {
     "@builder.io/partytown": "^0.8.0",
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
-    "@playwright/test": "^1.34.3",
+    "@playwright/test": "^1.35.0",
     "@types/node": "^20.2.5",
-    "@types/react": "^18.2.7",
+    "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
     "@types/react-router-dom": "^5.3.3",
-    "@vitejs/plugin-react-swc": "^3.3.1",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.13",
     "cssnano": "^6.0.1",
-    "dependency-cruiser": "^13.0.2",
-    "eslint": "^8.41.0",
+    "dependency-cruiser": "^13.0.3",
+    "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -65,7 +65,7 @@
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "sass": "^1.62.1",
+    "sass": "^1.63.2",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"
   }
