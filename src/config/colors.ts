@@ -1,7 +1,7 @@
 // *-500
 export const colors = [
   {
-    name: 'whiet',
+    name: 'white',
     standard: {
       r: 237,
       g: 237,
