@@ -1,8 +1,8 @@
 {
   "lang": "en-EN",
-  "name": "WEBGL Speaker configurator",
-  "short_name": "WEBGL Speaker configurator",
-  "description": "3D Web - ReactJS speaker configurator made with Sketchfab viewer API.",
+  "name": "WebGL 3D Product Configurator — JBL Speaker",
+  "short_name": "JBL Speaker 3D Configurator",
+  "description": "Real-time interactive 3D product configuratord developed with React.JS and Sketchfab accessible directly via the web.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
