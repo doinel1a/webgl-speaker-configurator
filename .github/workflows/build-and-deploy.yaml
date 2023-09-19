@@ -24,14 +24,14 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{env.REGION}}
 
-      - name: Install Yarn
-        run: npm install --global yarn
+      - name: Install PNPM
+        run: npm install --global pnpm
 
       - name: Install Deps
-        run: yarn install
+        run: pnpm install
 
       - name: Build static files
-        run: yarn build
+        run: pnpm build
 
       - name: Clear old files
         run: |
